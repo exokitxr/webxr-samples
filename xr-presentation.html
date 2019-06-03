@@ -236,6 +236,23 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
       // Start the XR application.
       initXR();
+
+      /* setTimeout(() => {
+        const _enterFakeXr = () => {
+          const fakeXrDisplay = window.navigator.createFakeXRDisplay();
+          const _recurse = () => {
+            window.requestAnimationFrame(() => {
+              const f = ((Date.now() % 2000) / 2000) * Math.PI*2;
+              fakeXrDisplay.position.set(Math.cos(f + Math.PI), 0, Math.sin(f));
+              fakeXrDisplay.pushUpdate();
+
+              _recurse();
+            });
+          };
+          _recurse();
+        };
+        xrButton.domElement.dispatchEvent(new MouseEvent('click'));
+      }); */
       })();
     </script>
   </body>

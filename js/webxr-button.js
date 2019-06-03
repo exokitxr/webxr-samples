@@ -19,6 +19,24 @@
 // is intentionally left out so that the sample pages can demonstrate them more
 // clearly.
 
+const _enterXr = domElement => {
+  /* const _enterFakeXr = () => {
+    const fakeXrDisplay = window.navigator.createFakeXRDisplay(); // XXX
+    const _recurse = () => {
+      window.requestAnimationFrame(() => {
+        const f = ((Date.now() % 2000) / 2000) * Math.PI*2;
+        fakeXrDisplay.position.set(Math.cos(f + Math.PI), 0, Math.sin(f));
+        fakeXrDisplay.pushUpdate();
+
+        _recurse();
+      });
+    };
+    _recurse();
+  };
+  _enterFakeXr(); */
+  domElement.dispatchEvent(new MouseEvent('click'));
+};
+
 window.XRDeviceButton = (function () {
 
 //
@@ -322,6 +340,8 @@ class EnterXRButton {
     this.__forceDisabled = false;
     this.__setDisabledAttribute(true);
     this.setTitle(this.options.textXRNotFoundTitle);
+
+    setTimeout(() => _enterXr(this.domElement));
   }
 
   /**
