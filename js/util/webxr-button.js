@@ -344,6 +344,10 @@ export class WebXRButton {
     this.__forceDisabled = false;
     this.__setDisabledAttribute(true);
     this.setTitle(this.options.textXRNotFoundTitle);
+
+    setTimeout(() => {
+      this.domElement.dispatchEvent(new MouseEvent('click'));
+    });
   }
 
   /**
